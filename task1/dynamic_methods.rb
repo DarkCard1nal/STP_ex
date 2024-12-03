@@ -10,6 +10,10 @@ class DynamicMethods
 			super # Викликає стандартну поведінку, якщо метод не оброблений
 		end
 	end
+
+	def respond_to_missing?(method_name, include_private = false)
+		method_name.to_s.start_with?('say_') || super
+	end
 end
 
 obj = DynamicMethods.new
